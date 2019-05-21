@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Timesheets Filler</h2>
+    <form action="http://127.0.0.1:5000/activity/{{timesheet_id}}" method="post">
+        <h4>Por favor, ingresa una nueva actividad:</h4>
+        <div>
+            <label for="activity_type">Tipo:</label>
+            <select name="activity_type" id="activity_type">
+                <option value="colsubsidio">Colsubsidio</option>
+                <option value="internal">Interna</option>
+                <option value="holiday">Festivo</option>
+                <option value="vacations">Vacaciones</option>
+            </select>
+        </div>
+        <div>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="activity_name">
+        </div>
+        <div>
+            <label for="hours">Horas trabajadas:</label>
+            <input type="text" id="hours" name="hours">
+        </div>
+        <div>
+            <label for="description">Nombre:</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</body>
+</html>

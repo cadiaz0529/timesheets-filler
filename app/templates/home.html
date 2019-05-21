@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timesheets Filler</title>
+</head>
+<body>
+    <div>
+        <ul id="navigation">
+            <li><a href="http://localhost:5000/">Home</a></li>
+            <li><a href="http://localhost:5000/timesheet">New Timesheet</a></li>
+        </ul>
+    </div>
+    <div>
+        <h2>Timesheets Filler</h2>
+        <div>
+            <ul>
+                {% for item in timesheets %}
+                    <li><a href="http://localhost:5000/activity/{{item.timesheet_id}}">{{item.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
