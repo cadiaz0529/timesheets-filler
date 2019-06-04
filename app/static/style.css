@@ -1,0 +1,47 @@
+nav {
+    background-color: #66ccff;
+}
+
+a, a:hover {
+    text-decoration: none !important;
+}
+
+nav a, nav a:hover {
+    color: white;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    color: #4c4c4c;
+}
+
+#timesheets-list ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.list-item {
+    padding: 20px;
+}
+
+.list-item:hover {
+    background-color: #e5e5e5;
+    transition: background-color 0.5s;
+}
+
+.media-body {
+    color: #4c4c4c;
+}
+
+.media-title {
+    color: #666;
+}
