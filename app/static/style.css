@@ -2,8 +2,9 @@ nav {
     background-color: #66ccff;
 }
 
-a, a:hover {
+a, a:hover, a:active, a:focus {
     text-decoration: none !important;
+    outline: 0;
 }
 
 nav a, nav a:hover {
@@ -44,4 +45,17 @@ h3 {
 
 .media-title {
     color: #666;
+}
+
+.check-column {
+    width: 40px;
+}
+
+.table-row:hover {
+    cursor: pointer;
+}
+
+table {
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
