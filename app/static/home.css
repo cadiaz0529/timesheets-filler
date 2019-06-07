@@ -15,6 +15,10 @@ nav a, nav a:hover {
     margin-top: 30px;
 }
 
+.row {
+    margin: 10px auto;
+}
+
 .flex-container {
     display: flex;
     align-items: center;
@@ -45,17 +49,4 @@ h3 {
 
 .media-title {
     color: #666;
-}
-
-.check-column {
-    width: 40px;
-}
-
-.table-row:hover {
-    cursor: pointer;
-}
-
-table {
-    margin-top: 20px;
-    margin-bottom: 50px;
 }

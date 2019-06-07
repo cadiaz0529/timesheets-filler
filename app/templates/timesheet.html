@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Timesheets Filler</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='timesheet.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -67,80 +67,466 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12" id="timesheets-list">
-                <form action="#">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr class="table-row">
-                                <td class="check-column">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td class="content-column">Actividad 1</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="check-column">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td class="content-column">Actividad 2</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="check-column">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td class="content-column">Actividad 3</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="check-column">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td class="content-column">Actividad 4</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="check-column">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input">
-                                    </div>
-                                </td>
-                                <td class="content-column">Actividad 5</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button type="submit" class="btn btn-md btn-primary" data-toggle="modal" data-target="#hoursModal">Listo</button>
-                    <div class="modal fade" id="hoursModal" tabindex="-1" role="dialog" aria-labelledby="hoursModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="hoursModalLabel">Número de horas trabajadas</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                              <form action="#">
-                                  <div class="form-group row">
-                                      <label for="activity1" class="col-sm-10 col-form-label">Nombre</label>
-                                      <div class="col-sm-2">
-                                          <input type="text" class="form-control" id="activity1">
-                                      </div>
-                                  </div>
-                              </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Listo</button>
-                          </div>
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday" aria-selected="true">Lunes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tuesday-tab" data-toggle="tab" href="#tuesday" role="tab" aria-controls="tuesday" aria-selected="false">Martes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday" aria-selected="false">Miércoles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="thursday-tab" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday" aria-selected="true">Jueves</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="friday-tab" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="true">Viernes</a>
+          </li>
+        </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
+                      <div class="row">
+                        <div class="col-sm-12 timesheets-list">
+                            <form action="#">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Agregar</th>
+                                            <th>Descripción</th>
+                                            <th>Horas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 1</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 2</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 3</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 4</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 5</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
                         </div>
                       </div>
-                    </div>
-                </form>
+                  </div>
+                  <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
+                      <div class="row">
+                        <div class="col-sm-12 timesheets-list">
+                            <form action="#">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Agregar</th>
+                                            <th>Descripción</th>
+                                            <th>Horas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 1</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 2</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 3</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 4</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 5</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
+                      <div class="row">
+                        <div class="col-sm-12 timesheets-list">
+                            <form action="#">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Agregar</th>
+                                            <th>Descripción</th>
+                                            <th>Horas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 1</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 2</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 3</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 4</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 5</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="thursday" role="tabpanel" aria-labelledby="thursday-tab">
+                      <div class="row">
+                        <div class="col-sm-12 timesheets-list">
+                            <form action="#">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Agregar</th>
+                                            <th>Descripción</th>
+                                            <th>Horas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 1</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 2</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 3</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 4</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 5</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="friday" role="tabpanel" aria-labelledby="friday-tab">
+                      <div class="row">
+                        <div class="col-sm-12 timesheets-list">
+                            <form action="#">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Agregar</th>
+                                            <th>Descripción</th>
+                                            <th>Horas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 1</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 2</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 3</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 4</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="table-row">
+                                            <td class="check-column">
+                                                <div class="form-group form-check">
+                                                    <input type="checkbox" class="form-check-input">
+                                                </div>
+                                            </td>
+                                            <td class="content-column">Actividad 5</td>
+                                            <td class="col-sm-1 hours-column">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-md btn-primary" data-toggle="modal" data-target="#hoursModal">Guardar</button>
+                <div class="modal fade" id="hoursModal" tabindex="-1" role="dialog" aria-labelledby="hoursModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="hoursModalLabel">Confirmar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  ¿Desea confirmar los cambios hechos?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">OK</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
             </div>
         </div>
     </div>

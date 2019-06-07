@@ -1,0 +1,66 @@
+nav {
+    background-color: #66ccff;
+}
+
+a, a:hover, a:active, a:focus {
+    text-decoration: none !important;
+    outline: 0;
+}
+
+nav a, nav a:hover {
+    color: white;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.row {
+    margin: 10px auto;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    color: #4c4c4c;
+}
+
+.check-column {
+    width: 40px;
+}
+
+.form-check-input {
+    margin: auto !important;
+}
+
+.hours-column {
+    width: 70px;
+}
+
+.table-row:hover {
+    cursor: pointer;
+}
+
+table {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+td {
+    height: 50px;
+}
+
+th {
+    text-align: center !important;
+}
+
+td .form-group {
+    height: 15px;
+}
+
+td .form-control {
+    height: 30px;
+}
